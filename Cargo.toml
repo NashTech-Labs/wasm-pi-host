@@ -1,7 +1,7 @@
 [workspace]
 
 members = [
-  "animated_LEDs",
+  "animated_indicator",
   "battery_indicator",
   "pihost"
 ]
