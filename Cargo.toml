@@ -1,0 +1,7 @@
+[workspace]
+
+members = [
+  "animated_LEDs",
+  "battery_indicator",
+  "pihost"
+]
