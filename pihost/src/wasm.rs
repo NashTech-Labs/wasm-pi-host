@@ -34,7 +34,7 @@ fn load_module(path: &str) -> Module {
 ///
 /// #Return
 ///
-/// An object of ModuleRef type containing a Rc to the ModuleInstance .
+/// An object of ModuleRef type containing a Rc to the ModuleInstance.
 pub fn get_module_instance(path: &str) -> ModuleRef {
     let module = load_module(path);
     let mut imports = ImportsBuilder::new();
@@ -66,6 +66,7 @@ impl From<InterpreterError> for Error {
 
 impl HostError for Error {}
 
+///Runtime struct allows the module to invoke the imported functions.
 pub struct Runtime {
     #[cfg(any(target_arch = "armv7", target_arch = "arm"))]
     blinkt: Blinkt, // (2)
@@ -74,6 +75,11 @@ pub struct Runtime {
 }
 
 impl Runtime {
+    /// new function creates a new instance of type Runtime with initial values.
+    ///
+    /// #Return
+    ///
+    /// An object of type Runtime.
     #[cfg(any(target_arch = "armv7", target_arch = "arm"))]
     pub fn new() -> Runtime {
         println!("Instiantiating WASM runtime (ARM)");
@@ -151,7 +157,7 @@ impl Runtime {
         self.blinkt.cleanup().unwrap();
         self.halt();
     }
-
+    /// halt function provides functionality to stop the execution of the module.
     fn halt(&self) {
         ::std::process::exit(0);
     }
